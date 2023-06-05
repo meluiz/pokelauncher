@@ -10,6 +10,7 @@ import Dialog from './partials/dialog'
 
 import ExampleOne from './articles/example-one.mdx'
 import ExampleTwo from './articles/example-two.mdx'
+import ExampleThree from './articles/example-three.mdx'
 
 export const Homepage = function () {
   const [article, updateArticle] = React.useState(null)
@@ -31,15 +32,19 @@ export const Homepage = function () {
           <div className="w-full flex flex-col end-start px-16 space-y-20">
             <section className="w-full h-auto grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
               <ArticleCard
+                title="Title"
+                description="lorem ipsum dolor sit"
+                thumbnail="https://images.indianexpress.com/2022/07/Minecraft-splash-screen-technoblade-tribute.jpg"
+                onClick={() => handleOnClick(<ExampleThree />)}
+              />
+              <ArticleCard
                 title="Hello World"
-                href="/"
                 description="lorem ipsum dolor sit"
                 thumbnail="https://images.indianexpress.com/2022/07/Minecraft-splash-screen-technoblade-tribute.jpg"
                 onClick={() => handleOnClick(<ExampleOne />)}
               />
               <ArticleCard
                 title="Hello World"
-                href="/"
                 description="lorem ipsum dolor sit"
                 thumbnail="https://images.indianexpress.com/2022/07/Minecraft-splash-screen-technoblade-tribute.jpg"
                 onClick={() => handleOnClick(<ExampleTwo />)}
