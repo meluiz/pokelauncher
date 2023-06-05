@@ -1,0 +1,343 @@
+import { injectQuery as __vite__injectQuery } from "/@vite/client";import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/App.jsx");import { jsxDEV } from "/@id/__x00__react/jsx-dev-runtime";
+import RefreshRuntime from "/@react-refresh";
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot) {
+  if (!window.__vite_plugin_react_preamble_installed__) {
+    throw new Error("@vitejs/plugin-react can't detect preamble. Something is wrong. See https://github.com/vitejs/vite-plugin-react/pull/11#discussion_r430879201");
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = (type, id) => {
+    RefreshRuntime.register(type, "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx " + id);
+  };
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import Versions from "/src/components/Versions.jsx";
+import icons from "/src/assets/icons.svg?import";
+function App() {
+  return /* @__PURE__ */ jsxDEV("div", { className: "container", children: [
+    /* @__PURE__ */ jsxDEV(Versions, {}, void 0, false, {
+      fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+      lineNumber: 5,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("svg", { className: "hero-logo", viewBox: "0 0 900 300", children: /* @__PURE__ */ jsxDEV("use", { xlinkHref: `${icons}#electron` }, void 0, false, {
+      fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+      lineNumber: 8,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+      lineNumber: 7,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("h2", { className: "hero-text", children: [
+      "You",
+      "'",
+      "ve successfully created an Electron project with React"
+    ] }, void 0, true, {
+      fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+      lineNumber: 10,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("p", { className: "hero-tagline", children: [
+      "Please try pressing ",
+      /* @__PURE__ */ jsxDEV("code", { children: "F12" }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 12,
+        columnNumber: 29
+      }, this),
+      " to open the devTool"
+    ] }, void 0, true, {
+      fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+      lineNumber: 11,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "links", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "link-item", children: /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://evite.netlify.app", rel: "noopener noreferrer", children: "Documentation" }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 17,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 16,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "link-item link-dot", children: "•" }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 21,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "link-item", children: /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://github.com/alex8088/electron-vite", rel: "noopener noreferrer", children: "Getting Help" }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 23,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 22,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "link-item link-dot", children: "•" }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 27,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "link-item", children: /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://github.com/alex8088/quick-start/tree/master/packages/create-electron", rel: "noopener noreferrer", children: "create-electron" }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 29,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 28,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+      lineNumber: 15,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "features", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "feature-item", children: /* @__PURE__ */ jsxDEV("article", { children: [
+        /* @__PURE__ */ jsxDEV("h2", { className: "title", children: "Configuring" }, void 0, false, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 38,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "detail", children: [
+          "Config with ",
+          /* @__PURE__ */ jsxDEV("span", { children: "electron.vite.config.ts" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 40,
+            columnNumber: 27
+          }, this),
+          " and refer to the",
+          " ",
+          /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://evite.netlify.app/config/", rel: "noopener noreferrer", children: "config guide" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 41,
+            columnNumber: 15
+          }, this),
+          "."
+        ] }, void 0, true, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 39,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 37,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 36,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "feature-item", children: /* @__PURE__ */ jsxDEV("article", { children: [
+        /* @__PURE__ */ jsxDEV("h2", { className: "title", children: "HMR" }, void 0, false, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 50,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "detail", children: [
+          "Edit ",
+          /* @__PURE__ */ jsxDEV("span", { children: "src/renderer" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 52,
+            columnNumber: 20
+          }, this),
+          " files to test HMR. See",
+          " ",
+          /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://evite.netlify.app/guide/hmr-in-renderer.html", rel: "noopener noreferrer", children: "docs" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 53,
+            columnNumber: 15
+          }, this),
+          "."
+        ] }, void 0, true, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 51,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 49,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 48,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "feature-item", children: /* @__PURE__ */ jsxDEV("article", { children: [
+        /* @__PURE__ */ jsxDEV("h2", { className: "title", children: "Hot Reloading" }, void 0, false, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 62,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "detail", children: [
+          "Run",
+          " ",
+          /* @__PURE__ */ jsxDEV("span", { children: [
+            "'",
+            "electron-vite dev --watch",
+            "'"
+          ] }, void 0, true, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 65,
+            columnNumber: 15
+          }, this),
+          " ",
+          "to enable. See",
+          " ",
+          /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://evite.netlify.app/guide/hot-reloading.html", rel: "noopener noreferrer", children: "docs" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 69,
+            columnNumber: 15
+          }, this),
+          "."
+        ] }, void 0, true, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 63,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 61,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 60,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "feature-item", children: /* @__PURE__ */ jsxDEV("article", { children: [
+        /* @__PURE__ */ jsxDEV("h2", { className: "title", children: "Debugging" }, void 0, false, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 78,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "detail", children: [
+          "Check out ",
+          /* @__PURE__ */ jsxDEV("span", { children: ".vscode/launch.json" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 80,
+            columnNumber: 25
+          }, this),
+          ". See",
+          " ",
+          /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://evite.netlify.app/guide/debugging.html", rel: "noopener noreferrer", children: "docs" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 81,
+            columnNumber: 15
+          }, this),
+          "."
+        ] }, void 0, true, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 79,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 77,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 76,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "feature-item", children: /* @__PURE__ */ jsxDEV("article", { children: [
+        /* @__PURE__ */ jsxDEV("h2", { className: "title", children: "Source Code Protection" }, void 0, false, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 90,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "detail", children: [
+          "Supported via built-in plugin ",
+          /* @__PURE__ */ jsxDEV("span", { children: "bytecodePlugin" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 92,
+            columnNumber: 45
+          }, this),
+          ". See",
+          " ",
+          /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://evite.netlify.app/guide/source-code-protection.html", rel: "noopener noreferrer", children: "docs" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 93,
+            columnNumber: 15
+          }, this),
+          "."
+        ] }, void 0, true, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 91,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 89,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 88,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "feature-item", children: /* @__PURE__ */ jsxDEV("article", { children: [
+        /* @__PURE__ */ jsxDEV("h2", { className: "title", children: "Packaging" }, void 0, false, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 102,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "detail", children: [
+          "Use",
+          " ",
+          /* @__PURE__ */ jsxDEV("a", { target: "_blank", href: "https://www.electron.build", rel: "noopener noreferrer", children: "electron-builder" }, void 0, false, {
+            fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+            lineNumber: 105,
+            columnNumber: 15
+          }, this),
+          " ",
+          "and pre-configured to pack your app."
+        ] }, void 0, true, {
+          fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+          lineNumber: 103,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 101,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+        lineNumber: 100,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+      lineNumber: 35,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx",
+    lineNumber: 4,
+    columnNumber: 10
+  }, this);
+}
+_c = App;
+export default App;
+var _c;
+$RefreshReg$(_c, "App");
+if (import.meta.hot) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+  import(
+    /* @vite-ignore */
+    __vite__injectQuery(import.meta.url, 'import')).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/melui/OneDrive/Área de Trabalho/electron-app/src/renderer/src/App.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports)
+        return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate(currentExports, nextExports);
+      if (invalidateMessage)
+        import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUFBO0FBQUE7QUFBQSxlQU1BO0FBQUEsV0FSRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBU0EsS0FWRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBV0E7QUFBQSxTQTVGRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBNkZBO0FBQUEsT0FwSUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQXFJQTtBQUVKO0FBQUNFLEtBeklRRDtBQTJJVCxlQUFlQTtBQUFHO0FBQUFFIiwibmFtZXMiOlsiVmVyc2lvbnMiLCJpY29ucyIsIkFwcCIsIl9jIiwiJFJlZnJlc2hSZWckIl0sInNvdXJjZXMiOlsiQXBwLmpzeCJdLCJmaWxlIjoiQzovVXNlcnMvbWVsdWkvT25lRHJpdmUvw4FyZWEgZGUgVHJhYmFsaG8vZWxlY3Ryb24tYXBwL3NyYy9yZW5kZXJlci9zcmMvQXBwLmpzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBWZXJzaW9ucyBmcm9tICcuL2NvbXBvbmVudHMvVmVyc2lvbnMnXG5pbXBvcnQgaWNvbnMgZnJvbSAnLi9hc3NldHMvaWNvbnMuc3ZnJ1xuXG5mdW5jdGlvbiBBcHAoKSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJjb250YWluZXJcIj5cbiAgICAgIDxWZXJzaW9ucz48L1ZlcnNpb25zPlxuXG4gICAgICA8c3ZnIGNsYXNzTmFtZT1cImhlcm8tbG9nb1wiIHZpZXdCb3g9XCIwIDAgOTAwIDMwMFwiPlxuICAgICAgICA8dXNlIHhsaW5rSHJlZj17YCR7aWNvbnN9I2VsZWN0cm9uYH0gLz5cbiAgICAgIDwvc3ZnPlxuICAgICAgPGgyIGNsYXNzTmFtZT1cImhlcm8tdGV4dFwiPllvdXtcIidcIn12ZSBzdWNjZXNzZnVsbHkgY3JlYXRlZCBhbiBFbGVjdHJvbiBwcm9qZWN0IHdpdGggUmVhY3Q8L2gyPlxuICAgICAgPHAgY2xhc3NOYW1lPVwiaGVyby10YWdsaW5lXCI+XG4gICAgICAgIFBsZWFzZSB0cnkgcHJlc3NpbmcgPGNvZGU+RjEyPC9jb2RlPiB0byBvcGVuIHRoZSBkZXZUb29sXG4gICAgICA8L3A+XG5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwibGlua3NcIj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJsaW5rLWl0ZW1cIj5cbiAgICAgICAgICA8YSB0YXJnZXQ9XCJfYmxhbmtcIiBocmVmPVwiaHR0cHM6Ly9ldml0ZS5uZXRsaWZ5LmFwcFwiIHJlbD1cIm5vb3BlbmVyIG5vcmVmZXJyZXJcIj5cbiAgICAgICAgICAgIERvY3VtZW50YXRpb25cbiAgICAgICAgICA8L2E+XG4gICAgICAgIDwvZGl2PlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImxpbmstaXRlbSBsaW5rLWRvdFwiPuKAojwvZGl2PlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImxpbmstaXRlbVwiPlxuICAgICAgICAgIDxhXG4gICAgICAgICAgICB0YXJnZXQ9XCJfYmxhbmtcIlxuICAgICAgICAgICAgaHJlZj1cImh0dHBzOi8vZ2l0aHViLmNvbS9hbGV4ODA4OC9lbGVjdHJvbi12aXRlXCJcbiAgICAgICAgICAgIHJlbD1cIm5vb3BlbmVyIG5vcmVmZXJyZXJcIlxuICAgICAgICAgID5cbiAgICAgICAgICAgIEdldHRpbmcgSGVscFxuICAgICAgICAgIDwvYT5cbiAgICAgICAgPC9kaXY+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibGluay1pdGVtIGxpbmstZG90XCI+4oCiPC9kaXY+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibGluay1pdGVtXCI+XG4gICAgICAgICAgPGFcbiAgICAgICAgICAgIHRhcmdldD1cIl9ibGFua1wiXG4gICAgICAgICAgICBocmVmPVwiaHR0cHM6Ly9naXRodWIuY29tL2FsZXg4MDg4L3F1aWNrLXN0YXJ0L3RyZWUvbWFzdGVyL3BhY2thZ2VzL2NyZWF0ZS1lbGVjdHJvblwiXG4gICAgICAgICAgICByZWw9XCJub29wZW5lciBub3JlZmVycmVyXCJcbiAgICAgICAgICA+XG4gICAgICAgICAgICBjcmVhdGUtZWxlY3Ryb25cbiAgICAgICAgICA8L2E+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmVhdHVyZXNcIj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmZWF0dXJlLWl0ZW1cIj5cbiAgICAgICAgICA8YXJ0aWNsZT5cbiAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJ0aXRsZVwiPkNvbmZpZ3VyaW5nPC9oMj5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImRldGFpbFwiPlxuICAgICAgICAgICAgICBDb25maWcgd2l0aCA8c3Bhbj5lbGVjdHJvbi52aXRlLmNvbmZpZy50czwvc3Bhbj4gYW5kIHJlZmVyIHRvIHRoZXsnICd9XG4gICAgICAgICAgICAgIDxhIHRhcmdldD1cIl9ibGFua1wiIGhyZWY9XCJodHRwczovL2V2aXRlLm5ldGxpZnkuYXBwL2NvbmZpZy9cIiByZWw9XCJub29wZW5lciBub3JlZmVycmVyXCI+XG4gICAgICAgICAgICAgICAgY29uZmlnIGd1aWRlXG4gICAgICAgICAgICAgIDwvYT5cbiAgICAgICAgICAgICAgLlxuICAgICAgICAgICAgPC9wPlxuICAgICAgICAgIDwvYXJ0aWNsZT5cbiAgICAgICAgPC9kaXY+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmVhdHVyZS1pdGVtXCI+XG4gICAgICAgICAgPGFydGljbGU+XG4gICAgICAgICAgICA8aDIgY2xhc3NOYW1lPVwidGl0bGVcIj5ITVI8L2gyPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZGV0YWlsXCI+XG4gICAgICAgICAgICAgIEVkaXQgPHNwYW4+c3JjL3JlbmRlcmVyPC9zcGFuPiBmaWxlcyB0byB0ZXN0IEhNUi4gU2VleycgJ31cbiAgICAgICAgICAgICAgPGFcbiAgICAgICAgICAgICAgICB0YXJnZXQ9XCJfYmxhbmtcIlxuICAgICAgICAgICAgICAgIGhyZWY9XCJodHRwczovL2V2aXRlLm5ldGxpZnkuYXBwL2d1aWRlL2htci1pbi1yZW5kZXJlci5odG1sXCJcbiAgICAgICAgICAgICAgICByZWw9XCJub29wZW5lciBub3JlZmVycmVyXCJcbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIGRvY3NcbiAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgICAuXG4gICAgICAgICAgICA8L3A+XG4gICAgICAgICAgPC9hcnRpY2xlPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmZWF0dXJlLWl0ZW1cIj5cbiAgICAgICAgICA8YXJ0aWNsZT5cbiAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJ0aXRsZVwiPkhvdCBSZWxvYWRpbmc8L2gyPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZGV0YWlsXCI+XG4gICAgICAgICAgICAgIFJ1bnsnICd9XG4gICAgICAgICAgICAgIDxzcGFuPlxuICAgICAgICAgICAgICAgIHtcIidcIn1lbGVjdHJvbi12aXRlIGRldiAtLXdhdGNoe1wiJ1wifVxuICAgICAgICAgICAgICA8L3NwYW4+eycgJ31cbiAgICAgICAgICAgICAgdG8gZW5hYmxlLiBTZWV7JyAnfVxuICAgICAgICAgICAgICA8YVxuICAgICAgICAgICAgICAgIHRhcmdldD1cIl9ibGFua1wiXG4gICAgICAgICAgICAgICAgaHJlZj1cImh0dHBzOi8vZXZpdGUubmV0bGlmeS5hcHAvZ3VpZGUvaG90LXJlbG9hZGluZy5odG1sXCJcbiAgICAgICAgICAgICAgICByZWw9XCJub29wZW5lciBub3JlZmVycmVyXCJcbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIGRvY3NcbiAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgICAuXG4gICAgICAgICAgICA8L3A+XG4gICAgICAgICAgPC9hcnRpY2xlPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmZWF0dXJlLWl0ZW1cIj5cbiAgICAgICAgICA8YXJ0aWNsZT5cbiAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJ0aXRsZVwiPkRlYnVnZ2luZzwvaDI+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJkZXRhaWxcIj5cbiAgICAgICAgICAgICAgQ2hlY2sgb3V0IDxzcGFuPi52c2NvZGUvbGF1bmNoLmpzb248L3NwYW4+LiBTZWV7JyAnfVxuICAgICAgICAgICAgICA8YVxuICAgICAgICAgICAgICAgIHRhcmdldD1cIl9ibGFua1wiXG4gICAgICAgICAgICAgICAgaHJlZj1cImh0dHBzOi8vZXZpdGUubmV0bGlmeS5hcHAvZ3VpZGUvZGVidWdnaW5nLmh0bWxcIlxuICAgICAgICAgICAgICAgIHJlbD1cIm5vb3BlbmVyIG5vcmVmZXJyZXJcIlxuICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgZG9jc1xuICAgICAgICAgICAgICA8L2E+XG4gICAgICAgICAgICAgIC5cbiAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICA8L2FydGljbGU+XG4gICAgICAgIDwvZGl2PlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZlYXR1cmUtaXRlbVwiPlxuICAgICAgICAgIDxhcnRpY2xlPlxuICAgICAgICAgICAgPGgyIGNsYXNzTmFtZT1cInRpdGxlXCI+U291cmNlIENvZGUgUHJvdGVjdGlvbjwvaDI+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJkZXRhaWxcIj5cbiAgICAgICAgICAgICAgU3VwcG9ydGVkIHZpYSBidWlsdC1pbiBwbHVnaW4gPHNwYW4+Ynl0ZWNvZGVQbHVnaW48L3NwYW4+LiBTZWV7JyAnfVxuICAgICAgICAgICAgICA8YVxuICAgICAgICAgICAgICAgIHRhcmdldD1cIl9ibGFua1wiXG4gICAgICAgICAgICAgICAgaHJlZj1cImh0dHBzOi8vZXZpdGUubmV0bGlmeS5hcHAvZ3VpZGUvc291cmNlLWNvZGUtcHJvdGVjdGlvbi5odG1sXCJcbiAgICAgICAgICAgICAgICByZWw9XCJub29wZW5lciBub3JlZmVycmVyXCJcbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIGRvY3NcbiAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgICAuXG4gICAgICAgICAgICA8L3A+XG4gICAgICAgICAgPC9hcnRpY2xlPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmZWF0dXJlLWl0ZW1cIj5cbiAgICAgICAgICA8YXJ0aWNsZT5cbiAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJ0aXRsZVwiPlBhY2thZ2luZzwvaDI+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJkZXRhaWxcIj5cbiAgICAgICAgICAgICAgVXNleycgJ31cbiAgICAgICAgICAgICAgPGEgdGFyZ2V0PVwiX2JsYW5rXCIgaHJlZj1cImh0dHBzOi8vd3d3LmVsZWN0cm9uLmJ1aWxkXCIgcmVsPVwibm9vcGVuZXIgbm9yZWZlcnJlclwiPlxuICAgICAgICAgICAgICAgIGVsZWN0cm9uLWJ1aWxkZXJcbiAgICAgICAgICAgICAgPC9hPnsnICd9XG4gICAgICAgICAgICAgIGFuZCBwcmUtY29uZmlndXJlZCB0byBwYWNrIHlvdXIgYXBwLlxuICAgICAgICAgICAgPC9wPlxuICAgICAgICAgIDwvYXJ0aWNsZT5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgKVxufVxuXG5leHBvcnQgZGVmYXVsdCBBcHBcbiJdfQ==
