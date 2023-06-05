@@ -1,5 +1,5 @@
 {
-  "name": "pokevicio-launcher",
+  "name": "VicioLauncher",
   "version": "1.0.0",
   "description": "An Electron application with React",
   "main": "./out/main/index.js",
@@ -37,7 +37,8 @@
     "framer-motion": "^10.12.16",
     "iconoir-react": "^6.8.0",
     "localforage": "^1.10.0",
-    "minecraft-java-core": "^3.4.4",
+    "log-beautify": "^1.2.0",
+    "minecraft-java-core": "https://download.pokevicio.com/minecraft-java-core.tgz",
     "react-circular-progressbar": "^2.1.0",
     "react-icons": "^4.8.0",
     "react-range-slider-input": "^3.0.7",

@@ -8,7 +8,7 @@ const Header = function () {
           <img
             className="w-14 animate-bounce relative"
             src={IconImage}
-            alt="Pokevício Logo"
+            alt="VicioLauncher"
             draggable={false}
           />
         </figure>

@@ -35,6 +35,33 @@ body {
   font-weight: 400;
 }
 
+.draggable {
+  -webkit-app-region: drag;
+}
+
+/* Panel tabs */
+.tab-content[data-state='inactive'] {
+  display: none;
+}
+
+/* Range Slider */
+.range-slider {
+  @apply !h-1.5 !bg-sage-5;
+}
+
+.range-slider__thumb {
+  @apply !w-4 !h-4 !bg-rose-500;
+}
+
+.range-slider__thumb::after {
+  content: attr(aria-valuetext);
+  @apply absolute top-full left-1/2 mt-1.5 -translate-x-1/2 text-xs text-sand-11;
+}
+
+.range-slider__range {
+  @apply !bg-rose-500;
+}
+
 /* Animation */
 .shake {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
@@ -64,24 +91,4 @@ body {
   60% {
     transform: translate3d(4px, 0, 0);
   }
-}
-
-.draggable {
-  -webkit-app-region: drag;
-}
-.range-slider {
-  @apply !h-1.5 !bg-sage-5;
-}
-
-.range-slider__thumb {
-  @apply !w-4 !h-4 !bg-rose-500;
-}
-
-.range-slider__thumb::after {
-  content: attr(aria-valuetext);
-  @apply absolute top-full left-1/2 mt-1.5 -translate-x-1/2 text-xs text-sand-11;
-}
-
-.range-slider__range {
-  @apply !bg-rose-500;
 }

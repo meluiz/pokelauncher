@@ -1,4 +1,4 @@
-# Pokelaucher
+# VicioLauncher
 
 An Electron application with React
 

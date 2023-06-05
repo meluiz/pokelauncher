@@ -42,7 +42,7 @@ export const Settings = function () {
   })
 
   return (
-    <Tabs.Content className="w-full h-auto px-4 py-8" value="settings">
+    <Tabs.Content className="tab-content w-full h-auto px-4 py-8" value="settings" forceMount>
       <Modal show={isOpen} onClose={onClose} />
       <div className="w-full block relative py-14 px-16">
         <div className="w-full max-w-sm space-y-12">

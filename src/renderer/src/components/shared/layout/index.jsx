@@ -34,7 +34,11 @@ export const Layout = function () {
     <div className="w-screen h-screen block relative bg-accents-1 text-sand-10">
       <Toolbar />
       {!hasAvailableUpdate ? <Modal show={!user} /> : <Updater />}
-      <Tabs.Root className="w-full h-screen flex flex-nowrap text-sand-10" defaultValue="homepage">
+      <Tabs.Root
+        type="scroll"
+        className="w-full h-screen flex flex-nowrap text-sand-10 overflow-hidden"
+        defaultValue="homepage"
+      >
         <Navigation />
         <Scroll.Root className="w-auto min-h-0 flex flex-1 relative">
           <Scroll.Viewport className="w-full h-full block relative">
@@ -42,9 +46,8 @@ export const Layout = function () {
             <Settings />
           </Scroll.Viewport>
           <Scroll.Scrollbar className="w-1 bg-transparent z-50" orientation="vertical">
-            <Scroll.Thumb className="w-2 bg-sand-6" />
+            <Scroll.Thumb className="w-2 bg-sand-6" data-state="hidden" />
           </Scroll.Scrollbar>
-          <Scroll.Corner className="ScrollAreaCorner" />
         </Scroll.Root>
       </Tabs.Root>
     </div>
