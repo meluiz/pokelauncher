@@ -5,6 +5,10 @@
   "main": "./out/main/index.js",
   "author": "meluiz.com",
   "homepage": "https://www.electronjs.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IamFULL1/VicioLauncher"
+  },
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
