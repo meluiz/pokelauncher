@@ -9,9 +9,17 @@ import icon from '../../resources/icon.png'
 import { Launch, Microsoft, Mojang } from 'minecraft-java-core'
 import launcher from '../renderer/src/data/laucher'
 
-import logger from 'log-beautify'
+import { pino } from 'pino'
 
-logger.trace('Trace')
+const logger = pino({
+  level: 'info',
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      colorize: true
+    }
+  }
+})
 
 const datadir =
   process.env.APPDATA ||
@@ -21,6 +29,7 @@ const datadir =
 
 let Win = null
 let game = new Launch()
+let tried = 0
 
 const options = {
   title: launcher.name,
@@ -44,17 +53,32 @@ function destroy() {
     return
   }
 
+  logger.info('Destroying window')
+
   Win.close()
+
   game = null
   Win = null
+}
+
+function tryCatch(sender, channel, args) {
+  try {
+    sender.send(channel, args)
+  } catch (_) {
+    // ignore
+  }
 }
 
 function CreateWindow() {
   destroy()
 
+  console.clear()
+  logger.info('Creating window')
   Win = new BrowserWindow(options)
   Win.setMenuBarVisibility(false)
+
   Win.on('ready-to-show', () => {
+    logger.info('Window ready to show')
     Win.show()
   })
 
@@ -84,9 +108,6 @@ ipcMain.on('main-window-close', () => destroy())
 ipcMain.on('main-window-minimize', () => Win.minimize())
 ipcMain.on('main-window-progress', (ev, d) => Win.setProgressBar(d.DL / d.totDL))
 ipcMain.on('main-window-progress-reset', () => Win.setProgressBar(0))
-
-autoUpdater.autoDownload = false
-
 ipcMain.handle('update-laucher', () => {
   return new Promise((resolve) => {
     autoUpdater
@@ -102,6 +123,8 @@ ipcMain.handle('update-laucher', () => {
       })
   })
 })
+
+autoUpdater.autoDownload = false
 
 autoUpdater.on('update-available', () => {
   Win.webContents.send('update-available')
@@ -153,6 +176,8 @@ ipcMain.handle('auth-microsoft', async (ev, client) => {
 })
 
 ipcMain.handle('launch-game', async (ev, client) => {
+  logger.info('Starting download')
+
   const memory = {
     min: client.memory ? client.memory[0] : 512,
     max: client.memory ? client.memory[1] : 4000
@@ -161,99 +186,42 @@ ipcMain.handle('launch-game', async (ev, client) => {
   const response = await axios.get(launcher.config)
   const config = response.data
 
-  logger.info_(client)
-
   const options = {
     java: true,
     timeout: 10000,
-    detached: true,
+    detached: false,
     downloadFileMultiple: 6,
-    memory: {
-      min: `${memory.min * 1024}G`,
-      Gax: `${memory.max * 1024}G`
-    },
     authenticator: client.user,
     loader: config.loader,
     verify: config.verify,
     version: config.game_version,
     ignored: ['loader', ...config.ignored],
-    url: config.game_url ? launcher.files : config.game_url,
-    size: config.game_url ? launcher.files : config.game_url,
-    path: `${datadir}/${config.dataDirectory}`
+    url: launcher.files,
+    size: launcher.files,
+    path: `${datadir}/${config.dataDirectory}`,
+    memory: {
+      min: `${memory.min}M`,
+      max: `${memory.max}M`
+    }
   }
 
   game.Launch(options)
 
-  game.on('extract', console.log)
+  game.on('progress', (downloaded, totalSize, patch) =>
+    tryCatch(ev.sender, 'game-progress', { downloaded, totalSize, patch })
+  )
 
-  game.on('check', (progress, size) => {
-    try {
-      logger.info_('Minecraft is checking', `${((progress / size) * 100).toFixed(0)}%`)
-      ev.sender.send('game-check', { progress, size })
-    } catch (e) {
-      console.log(e)
-    }
-  })
+  game.on('check', (checked, totalSize, patch) =>
+    tryCatch(ev.sender, 'game-progress', { checked, totalSize, patch })
+  )
 
-  game.on('estimated', (data) => {
-    try {
-      let hh = Math.floor(data / 3600)
-      let mm = Math.floor((data - hh * 3600) / 60)
-      let ss = Math.floor(data - hh * 3600 - mm * 60)
-
-      logger.info_('Minecraft files is estimated to download in ', `${hh}h ${mm}m ${ss}s`)
-      ev.sender.send('game-estimated', data)
-    } catch (e) {
-      console.log(e)
-    }
-  })
-
-  game.on('speed', (speed) => {
-    try {
-      logger.info_(`Download speed is `, `${(speed / 1067008).toFixed(2)} Mb/s`)
-      ev.sender.send('game-speed', speed)
-    } catch (e) {
-      console.log(e)
-    }
-  })
-
-  game.on('patch', (patch) => {
-    try {
-      ev.sender.send('game-patch', patch)
-    } catch (e) {
-      console.log(e)
-    }
-  })
-
-  game.on('data', (data) => {
-    logger.info_('Minecraft launched', data)
-    ev.sender.send('main-window-progress-reset')
-  })
-
-  game.on('close', (patch) => {
-    try {
-      logger.info('Launcher')
-      ev.sender.send('game-close', patch)
-    } catch (e) {
-      console.log(e)
-    }
-  })
-
-  game.on('error', (error) => {
-    try {
-      ev.sender.send('game-error', error)
-    } catch (e) {
-      console.log(e)
-    }
-  })
-
-  game.on('progress', (progress, size) => {
-    try {
-      ev.sender.send('game-progress', { progress, size })
-    } catch (e) {
-      console.log(e)
-    }
-  })
+  game.on('extract', (extract) => tryCatch(ev.sender, 'game-progress', { extract }))
+  game.on('estimated', (time) => tryCatch(ev.sender, 'game-estimated', { time }))
+  game.on('speed', (time) => tryCatch(ev.sender, 'game-speed', { time, tried }))
+  game.on('patch', (patch) => tryCatch(ev.sender, 'game-patch', { patch }))
+  game.on('data', (data) => tryCatch(ev.sender, 'game-data', { data }))
+  game.on('close', (code) => tryCatch(ev.sender, 'game-close', { code }))
+  game.on('error', (error) => tryCatch(ev.sender, 'game-error', { error }))
 })
 
 app.whenReady().then(() => {

@@ -1,47 +1,72 @@
-import clsx from 'clsx'
-import { twMerge as tw } from 'tailwind-merge'
-
-import { FaPlay, FaStop } from 'react-icons/fa'
-import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
 import React from 'react'
+
 import { useAuthStore } from '@renderer/stores'
 import useMemoryStore from '@renderer/stores/memory'
+
+import { FaPlay, FaStop } from 'react-icons/fa'
 import { CgSpinner } from 'react-icons/cg'
+
+import { useImmer } from 'use-immer'
+import { useEffectOnce } from 'usehooks-ts'
+
+import { CircularProgress } from '../circular-progress'
+import classes from './classes'
 
 export const PlayButton = function () {
   const { user } = useAuthStore()
   const { memory } = useMemoryStore()
 
-  const [status, updateStatus] = React.useState('idle')
-  const [isPressed, updatePressed] = React.useState(false)
-  const [downloadProgress, updateDownloadProgress] = React.useState(false)
+  const [stats, setStats] = useImmer({
+    status: 'idle',
+    isPressed: false,
+    downloadProgress: 0
+  })
 
   const handleOnClick = React.useCallback(() => {
-    updatePressed(true)
     window.electron.ipcRenderer.invoke('launch-game', { user, memory })
-  }, [])
+    setStats((d) => {
+      d.isPressed = true
+    })
+  }, [user, memory])
 
-  const classes = tw(
-    clsx(
-      'w-auto min-h-0 flex center pl-3 pr-7 py-3 rounded-3xl space-x-3 group transition-all duration-200',
-      'shadow-[0_0_56px_-6px] shadow-orange-7/80 hover:shadow-[0_0_64px_0] hover:shadow-orange-7/80',
-      'bg-gradient-to-tr from-orange-6 to-orange-7',
-      'text-sand-12 text-2xl font-semibold',
-      'active:scale-[0.99] disabled:pointer-events-none disabled:select-none disabled:opacity-50'
-    )
-  )
-
-  React.useEffect(() => {
-    window.electron.ipcRenderer.on('game-check', (ev, { progress, size }) => {
-      updateDownloadProgress(((progress / size) * 100).toFixed(0))
-      updateStatus('checking')
+  useEffectOnce(() => {
+    window.electron.ipcRenderer.on('game-progress', (_, { downloaded, totalSize }) => {
+      const progress = ((downloaded / totalSize) * 100).toFixed(0)
+      setStats((d) => {
+        d.status = 'downloading'
+        d.downloadProgress = parseInt(progress, 10)
+      })
     })
 
-    window.electron.ipcRenderer.on('game-progress', (ev, { progress, size }) => {
-      updateDownloadProgress(((progress / size) * 100).toFixed(0))
-      updateStatus('downloading')
+    window.electron.ipcRenderer.on('game-check', (_, { checked, totalSize }) => {
+      const progress = ((checked / totalSize) * 100).toFixed(0)
+      setStats((d) => {
+        d.status = 'checking'
+        d.downloadProgress = parseInt(progress, 10)
+      })
     })
-  }, [])
+
+    window.electron.ipcRenderer.on('game-close', () => {
+      setStats((d) => {
+        d.isPressed = false
+        d.status = 'idle'
+      })
+    })
+
+    window.electron.ipcRenderer.on('game-error', (_, err) => {
+      console.log(err)
+    })
+
+    window.electron.ipcRenderer.on('game-speed', (ev, { time, tried }) => {
+      const band = (time / 1067008).toFixed(2)
+
+      if (parseInt(band, 10) === 0) {
+        window.electron.ipcRenderer.send('launch-download-restart', { tried })
+      }
+
+      console.log(`(${tried}) - ${(time / 1067008).toFixed(2)} Mb/s`)
+    })
+  })
 
   return (
     <div className="w-[168px] flex center rounded-3xl space-x-3 group bg-sage-1 transition-all duration-200 absolute top-full right-20 -translate-y-1/2">
@@ -49,33 +74,19 @@ export const PlayButton = function () {
         type="button"
         className={classes}
         onClick={handleOnClick}
-        disabled={status !== 'idle' || isPressed}
+        disabled={stats.status !== 'idle' || stats.isPressed}
       >
-        <span className="w-11 h-11 group-hover:scale-110 group-hover:-rotate-12 transition-all duration-200">
-          <CircularProgressbarWithChildren
-            value={downloadProgress >= 99 ? 0 : downloadProgress}
-            styles={{
-              path: {
-                stroke: `rgba(255,255,255,1)`,
-                transformOrigin: 'center center',
-                transition:
-                  downloadProgress >= 99
-                    ? 'stroke-dashoffset 0ms ease 0s'
-                    : 'stroke-dashoffset 500s ease 0s'
-              },
-              trail: {
-                stroke: 'rgba(255,255,255,.1)',
-                transform: 'rotate(0.25turn)',
-                transformOrigin: 'center center'
-              }
-            }}
-          >
-            <span className="w-10 h-10 flex center bg-sand-1 text-base rounded-full shadow-md shadow-red-900/70">
-              {status === 'checking' ? <CgSpinner className="animate-spin" /> : null}
-              {status === 'downloading' ? <FaStop /> : null}
-              {status === 'idle' ? <FaPlay /> : null}
-            </span>
-          </CircularProgressbarWithChildren>
+        <span className="w-11 h-11 flex center group-hover:scale-110 group-hover:-rotate-12 transition-all duration-200">
+          <CircularProgress
+            size={44}
+            strokeWidth={2}
+            percentage={isNaN(stats.downloadProgress) ? 0 : stats.downloadProgress}
+          />
+          <span className="w-10 h-10 flex center bg-sand-1 text-base rounded-full shadow-md shadow-red-900/70 absolute ">
+            {stats.status === 'checking' ? <CgSpinner className="animate-spin" /> : null}
+            {stats.status === 'downloading' ? <FaStop /> : null}
+            {stats.status === 'idle' ? <FaPlay /> : null}
+          </span>
         </span>
         <span>Jogar</span>
       </button>

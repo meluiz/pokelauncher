@@ -92,3 +92,24 @@ body {
     transform: translate3d(4px, 0, 0);
   }
 }
+
+.circle-background,
+.circle-progress {
+  fill: none;
+}
+
+.circle-background {
+  stroke: transparent;
+}
+
+.circle-progress {
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circle-text {
+  font-size: 3em;
+  font-weight: bold;
+  fill: #fff;
+}
