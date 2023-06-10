@@ -1,5 +1,5 @@
 import { useAuthStore } from '../../../../../stores'
-import Card from './card'
+import Card from './elements/card'
 
 const Cards = function () {
   const { user, accounts } = useAuthStore()
