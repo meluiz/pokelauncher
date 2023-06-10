@@ -104,10 +104,13 @@ ipcMain.on('main-window-open', function () {
   Win.center()
 })
 
+ipcMain.on('main-window-show', () => Win.show())
+ipcMain.on('main-window-hide', () => Win.hide())
 ipcMain.on('main-window-close', () => destroy())
 ipcMain.on('main-window-minimize', () => Win.minimize())
-ipcMain.on('main-window-progress', (ev, d) => Win.setProgressBar(d.DL / d.totDL))
+ipcMain.on('main-window-progress', (_, d) => Win.setProgressBar(d.DL / d.totDL))
 ipcMain.on('main-window-progress-reset', () => Win.setProgressBar(0))
+
 ipcMain.handle('update-laucher', () => {
   return new Promise((resolve) => {
     autoUpdater
@@ -219,9 +222,9 @@ ipcMain.handle('launch-game', async (ev, client) => {
   game.on('estimated', (time) => tryCatch(ev.sender, 'game-estimated', { time }))
   game.on('speed', (time) => tryCatch(ev.sender, 'game-speed', { time, tried }))
   game.on('patch', (patch) => tryCatch(ev.sender, 'game-patch', { patch }))
-  game.on('data', (data) => tryCatch(ev.sender, 'game-data', { data }))
   game.on('close', (code) => tryCatch(ev.sender, 'game-close', { code }))
   game.on('error', (error) => tryCatch(ev.sender, 'game-error', { error }))
+  game.on('data', (data) => tryCatch(ev.sender, 'game-data', { data }))
 })
 
 app.whenReady().then(() => {
