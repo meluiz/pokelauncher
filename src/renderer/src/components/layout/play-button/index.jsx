@@ -9,8 +9,8 @@ import { CgSpinner } from 'react-icons/cg'
 import { useImmer } from 'use-immer'
 import { useEffectOnce } from 'usehooks-ts'
 
-import { CircularProgress } from '../circular-progress'
 import classes from './classes'
+import { CircularProgress } from '@renderer/components/layout'
 
 export const PlayButton = function () {
   const { user } = useAuthStore()
