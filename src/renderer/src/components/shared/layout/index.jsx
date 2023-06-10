@@ -42,7 +42,7 @@ export const Layout = function () {
       >
         <Navigation />
         <Scroll.Root className="w-auto min-h-0 flex flex-1 relative">
-          <Scroll.Viewport className="w-full h-full block relative">
+          <Scroll.Viewport className="w-full h-full block relative overflow-hidden">
             <Homepage />
             <Settings />
           </Scroll.Viewport>

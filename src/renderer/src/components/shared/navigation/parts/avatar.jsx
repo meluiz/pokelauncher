@@ -1,4 +1,6 @@
 import React from 'react'
+import * as Tabs from '@radix-ui/react-tabs'
+
 import { useAuthStore } from '../../../../stores'
 
 import { ColorExtractor } from 'react-color-extractor'
@@ -15,19 +17,21 @@ const Avatar = function () {
   }, [])
 
   return (
-    <button
-      className="w-12 h-12 flex center shrink-0 grow-0 rounded-b-2xl rounded-t-md bg-white/5 overflow-hidden cursor-pointer group"
-      style={{ background: bgColor }}
-    >
-      <ColorExtractor getColors={handleExtractionComplete}>
-        <img
-          src={imageUrl}
-          className="w-full h-full object-cover object-center relative transition-all duration-200 ease-in-out"
-          alt={`Avatar do ${user?.name}`}
-          draggable={false}
-        />
-      </ColorExtractor>
-    </button>
+    <Tabs.Trigger value="settings" asChild>
+      <button
+        className="w-12 h-12 flex center shrink-0 grow-0 rounded-b-2xl rounded-t-md bg-white/5 overflow-hidden cursor-pointer group"
+        style={{ background: bgColor }}
+      >
+        <ColorExtractor getColors={handleExtractionComplete}>
+          <img
+            src={imageUrl}
+            className="w-full h-full object-cover object-center relative transition-all duration-200 ease-in-out"
+            alt={`Avatar do ${user?.name}`}
+            draggable={false}
+          />
+        </ColorExtractor>
+      </button>
+    </Tabs.Trigger>
   )
 }
 

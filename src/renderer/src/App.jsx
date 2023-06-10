@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { useEffectOnce } from 'usehooks-ts'
+
 import { Loader } from './components/scene'
 import { Layout } from './components/shared'
-import { useEffectOnce } from 'usehooks-ts'
+
 import useAuthStore from './stores/auth'
 import useMemoryStore from './stores/memory'
 
@@ -27,6 +29,16 @@ const App = function () {
     ;(async () => await auth.verify())()
     ;(async () => await action.verify())()
   })
+
+  React.useEffect(() => {
+    window.electron.ipcRenderer.on('data', () => {
+      window.electron.ipcRenderer.invoke('main-window-hide')
+    })
+
+    window.electron.ipcRenderer.on('close', () => {
+      window.electron.ipcRenderer.invoke('main-window-show')
+    })
+  }, [])
 
   React.useEffect(() => {
     setTimeout(checkForUpdate, 1500)

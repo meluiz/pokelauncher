@@ -12,7 +12,7 @@ const Button = function ({ onOpen }) {
 
   return (
     <button
-      className="w-full h-16 flex center rounded-lg py-4 bg-gradient-to-tr from-orange-6 to-orange-7 text-2xl text-white hover:opacity-90 active:opacity-80 active:scale-[0.99]  transition-all duration-200 ease-in-out"
+      className="w-full h-16 flex center rounded-lg py-4 bg-orange-7 text-2xl text-white hover:opacity-90 active:opacity-80 active:scale-[0.99]  transition-all duration-200 ease-in-out"
       onClick={onOpen}
     >
       <AddCircle strokeWidth={2} />
