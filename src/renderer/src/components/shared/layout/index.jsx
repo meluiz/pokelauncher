@@ -20,6 +20,7 @@ export const Layout = function () {
     if (process.env.NODE_ENV) {
       updateAvailableUpdate(false)
     }
+
     window.electron.ipcRenderer.on('update-available', () => {
       updateAvailableUpdate(true)
       window.electron.ipcRenderer.send('start-update')
