@@ -41,6 +41,7 @@
     "log-beautify": "^1.2.0",
     "minecraft-java-core": "https://download.pokevicio.com/minecraft-java-core.tgz",
     "pino": "^8.14.1",
+    "react-color-extractor": "^1.1.2",
     "react-icons": "^4.8.0",
     "react-range-slider-input": "^3.0.7",
     "tailwind-merge": "^1.12.0",
