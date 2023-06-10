@@ -20,7 +20,7 @@ const Trigger = function ({ label, href, children }) {
 
   return (
     <Tabs.Trigger
-      className="w-11 h-11 flex center rounded-2xl hover:rounded-3xl bg-accents-5 text-xl text-accents-7 hover:text-sand-12 overflow-hidden cursor-pointer transition-all duration-200 ease-in-out data-[state=active]:bg-gradient-to-tr data-[state=active]:from-orange-6 data-[state=active]:to-orange-7 data-[state=active]:text-white"
+      className="w-11 h-11 flex center rounded-2xl hover:rounded-3xl bg-accents-5 text-xl text-accents-7 hover:text-sand-12 overflow-hidden cursor-pointer transition-all duration-200 ease-in-out data-[state=active]:bg-orange-7 data-[state=active]:text-white"
       value={label}
       asChild
     >
