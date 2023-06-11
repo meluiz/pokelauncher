@@ -1,4 +1,3 @@
-# module du helios launcher
 name: Launcher Build
 on:
   push:
@@ -41,6 +40,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@pnpm'
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -48,7 +49,7 @@ jobs:
           python-version: 3.x
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm ci
         shell: bash
 
       - name: Build
