@@ -5,7 +5,7 @@ export const SubmitButton = function ({ isDisabled, isLoading }) {
   return (
     <button
       type="submit"
-      className="w-16 h-16 flex shrink-0 grow-0 center rounded-2xl font-bold bg-gradient-to-tr from-orange-6 to-orange-7 text-white text-3xl transition-all duration-200 active:scale-[.98] disabled:opacity-40"
+      className="w-16 h-16 flex shrink-0 grow-0 center rounded-2xl font-bold bg-gradient-to-tr from-orange-6 to-[#FF6536] text-white text-3xl transition-all duration-200 active:scale-[.98] disabled:opacity-40"
       disabled={isDisabled}
     >
       {isLoading ? (
