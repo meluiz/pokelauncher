@@ -9,18 +9,6 @@ import icon from '../../resources/icon.png'
 import { Launch, Microsoft, Mojang } from 'minecraft-java-core'
 import launcher from '../renderer/src/data/laucher'
 
-import { pino } from 'pino'
-
-const logger = pino({
-  level: 'info',
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      colorize: true
-    }
-  }
-})
-
 const datadir =
   process.env.APPDATA ||
   (process.platform == 'darwin'
@@ -53,8 +41,6 @@ function destroy() {
     return
   }
 
-  logger.info('Destroying window')
-
   Win.close()
 
   game = null
@@ -73,12 +59,10 @@ function CreateWindow() {
   destroy()
 
   console.clear()
-  logger.info('Creating window')
   Win = new BrowserWindow(options)
   Win.setMenuBarVisibility(false)
 
   Win.on('ready-to-show', () => {
-    logger.info('Window ready to show')
     Win.show()
   })
 
@@ -92,8 +76,6 @@ function CreateWindow() {
   } else {
     Win.loadFile(join(__dirname, '../renderer/index.html'))
   }
-
-  logger.info(`Launching ${launcher.name}`)
 }
 
 ipcMain.on('update-window-dev-tools', () => Win.getWindow().webContents.openDevTools())
@@ -179,8 +161,6 @@ ipcMain.handle('auth-microsoft', async (ev, client) => {
 })
 
 ipcMain.handle('launch-game', async (ev, client) => {
-  logger.info('Starting download')
-
   const memory = {
     min: client.memory ? client.memory[0] : 512,
     max: client.memory ? client.memory[1] : 4000
