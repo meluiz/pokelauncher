@@ -1,7 +1,7 @@
 {
   "name": "VicioLauncher",
   "version": "1.0.0",
-  "description": "An Electron application with React",
+  "description": "App Launcher",
   "main": "./out/main/index.js",
   "author": "meluiz.com",
   "homepage": "https://github.com/IamFULL1/VicioLauncher",
