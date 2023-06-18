@@ -15,7 +15,7 @@ const App = function () {
   const [isWindowUpdated, updateWindowUpdated] = React.useState(false)
 
   function checkForUpdate() {
-    window.electron.ipcRenderer.invoke('update-laucher').then((res) => {
+    window.electron.ipcRenderer.invoke('updater-update-laucher').then((res) => {
       if (res && res.error) {
         return window.electron.ipcRenderer.send('main-window-close')
       }
@@ -23,6 +23,9 @@ const App = function () {
       window.electron.ipcRenderer.send('main-window-open')
       updateWindowUpdated(true)
     })
+
+    window.electron.ipcRenderer.send('main-window-open')
+    updateWindowUpdated(true)
   }
 
   useEffectOnce(() => {

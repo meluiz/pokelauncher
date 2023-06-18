@@ -93,7 +93,9 @@ ipcMain.on('main-window-minimize', () => Win.minimize())
 ipcMain.on('main-window-progress', (_, d) => Win.setProgressBar(d.DL / d.totDL))
 ipcMain.on('main-window-progress-reset', () => Win.setProgressBar(0))
 
-ipcMain.handle('update-laucher', () => {
+autoUpdater.autoDownload = false
+
+ipcMain.handle('updater-update-laucher', () => {
   return new Promise((resolve) => {
     autoUpdater
       .checkForUpdates()
@@ -109,29 +111,27 @@ ipcMain.handle('update-laucher', () => {
   })
 })
 
-autoUpdater.autoDownload = false
-
-autoUpdater.on('update-available', () => {
-  Win.webContents.send('update-available')
+autoUpdater.on('updater-update-available', () => {
+  if (Win) {
+    Win.webContents.send('update-available')
+  }
 })
 
 ipcMain.on('start-update', () => {
   autoUpdater.downloadUpdate()
 })
 
-autoUpdater.on('update-not-available', () => {
-  Win.webContents.send('update-not-available')
+autoUpdater.on('updater-update-not-available', () => {
+  if (Win) {
+    Win.webContents.send('update-not-available')
+  }
 })
 
 autoUpdater.on('update-downloaded', () => {
   autoUpdater.quitAndInstall()
 })
 
-autoUpdater.on('update-downloaded', () => {
-  autoUpdater.quitAndInstall()
-})
-
-autoUpdater.on('download-progress', (progress) => {
+autoUpdater.on('updater-download-progress', (progress) => {
   Win.webContents.send('download-progress', progress)
 })
 

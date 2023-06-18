@@ -21,12 +21,12 @@ export const Layout = function () {
       updateAvailableUpdate(false)
     }
 
-    window.electron.ipcRenderer.on('update-available', () => {
+    window.electron.ipcRenderer.on('updater-update-available', () => {
       updateAvailableUpdate(true)
       window.electron.ipcRenderer.send('start-update')
     })
 
-    window.electron.ipcRenderer.on('update-not-available', () => {
+    window.electron.ipcRenderer.on('updater-update-not-available', () => {
       updateAvailableUpdate(false)
     })
   }, [])
