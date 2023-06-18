@@ -7,9 +7,6 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
-        with:
-          version: 8.6.0
-
       - name: Checkout
         uses: actions/checkout@v2
 
