@@ -4,7 +4,7 @@
   "description": "An Electron application with React",
   "main": "./out/main/index.js",
   "author": "meluiz.com",
-  "homepage": "https://www.electronjs.org",
+  "homepage": "https://github.com/IamFULL1/VicioLauncher",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IamFULL1/VicioLauncher"
