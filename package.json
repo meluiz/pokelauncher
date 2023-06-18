@@ -1,10 +1,10 @@
 {
   "name": "VicioLauncher",
-  "version": "1.0.1",
-  "description": "An Electron application with React",
+  "version": "1.0.0",
+  "description": "App Launcher",
   "main": "./out/main/index.js",
   "author": "meluiz.com",
-  "homepage": "https://www.electronjs.org",
+  "homepage": "https://github.com/IamFULL1/VicioLauncher",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IamFULL1/VicioLauncher"
@@ -37,6 +37,7 @@
     "framer-motion": "^10.12.16",
     "iconoir-react": "^6.8.0",
     "immer": "^10.0.2",
+    "latest-version": "^7.0.0",
     "localforage": "^1.10.0",
     "log-beautify": "^1.2.0",
     "minecraft-java-core": "https://download.pokevicio.com/minecraft-java-core.tgz",
