@@ -7,7 +7,7 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Install pnpm
+      - name: PNPM
         uses: pnpm/action-setup@v2
         with:
           version: 8.6.0
