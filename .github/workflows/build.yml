@@ -7,8 +7,6 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
-      - name: PNPM
-        uses: pnpm/action-setup@v2
         with:
           version: 8.6.0
 
@@ -54,11 +52,11 @@ jobs:
           python-version: 3.x
 
       - name: Install Dependencies
-        run: pnpm ci
+        run: npm ci
         shell: bash
 
       - name: Build
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
-        run: pnpm run build
+        run: npm run build
         shell: bash
