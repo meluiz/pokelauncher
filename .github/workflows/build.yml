@@ -54,7 +54,7 @@ jobs:
           version: 6.0.2
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
         shell: bash
 
       - name: Build
