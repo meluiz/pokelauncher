@@ -43,13 +43,15 @@ jobs:
         with:
           node-version: 18.x
 
-      - name: Install PNPM
-        run: npm install -g pnpm
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
+      
+      - name: Set up PNPM
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.0.2
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
