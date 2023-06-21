@@ -78,7 +78,7 @@ function CreateWindow() {
   }
 }
 
-ipcMain.on('update-window-dev-tools', () => Win.getWindow().webContents.openDevTools())
+ipcMain.on('update-window-dev-tools', () => Win && Win.webContents.openDevTools())
 ipcMain.on('main-window-open', function () {
   Win.setSize(1280, 720)
   Win.setResizable(true)
@@ -86,16 +86,16 @@ ipcMain.on('main-window-open', function () {
   Win.center()
 })
 
-ipcMain.on('main-window-show', () => Win.show())
-ipcMain.on('main-window-hide', () => Win.hide())
+ipcMain.on('main-window-show', () => Win && Win.show())
+ipcMain.on('main-window-hide', () => Win && Win.hide())
 ipcMain.on('main-window-close', () => destroy())
-ipcMain.on('main-window-minimize', () => Win.minimize())
-ipcMain.on('main-window-progress', (_, d) => Win.setProgressBar(d.DL / d.totDL))
-ipcMain.on('main-window-progress-reset', () => Win.setProgressBar(0))
+ipcMain.on('main-window-minimize', () => Win && Win.minimize())
+ipcMain.on('main-window-progress', (_, d) => Win && Win.setProgressBar(d.DL / d.totDL))
+ipcMain.on('main-window-progress-reset', () => Win && Win.setProgressBar(0))
 
 autoUpdater.autoDownload = false
 
-ipcMain.handle('updater-update-laucher', () => {
+ipcMain.handle('update-laucher', () => {
   return new Promise((resolve) => {
     autoUpdater
       .checkForUpdates()
@@ -111,9 +111,9 @@ ipcMain.handle('updater-update-laucher', () => {
   })
 })
 
-autoUpdater.on('updater-update-available', () => {
+autoUpdater.on('update-available', () => {
   if (Win) {
-    Win.webContents.send('update-available')
+    Win.webContents.send('updater-update-available')
   }
 })
 
@@ -121,9 +121,9 @@ ipcMain.on('start-update', () => {
   autoUpdater.downloadUpdate()
 })
 
-autoUpdater.on('updater-update-not-available', () => {
+autoUpdater.on('update-not-available', () => {
   if (Win) {
-    Win.webContents.send('update-not-available')
+    Win.webContents.send('updater-update-not-available')
   }
 })
 
@@ -131,8 +131,10 @@ autoUpdater.on('update-downloaded', () => {
   autoUpdater.quitAndInstall()
 })
 
-autoUpdater.on('updater-download-progress', (progress) => {
-  Win.webContents.send('download-progress', progress)
+autoUpdater.on('download-progress', (progress) => {
+  if (Win) {
+    Win.webContents.send('updater-download-progress', progress)
+  }
 })
 
 ipcMain.handle('system-memory', () => {

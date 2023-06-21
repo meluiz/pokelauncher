@@ -1,7 +1,7 @@
 import * as Tabs from '@radix-ui/react-tabs'
 import Cards from './parts/cards'
 
-import { useDisclosure } from '../../../hooks'
+import { useDisclosure } from '@renderer/hooks'
 import { useEffectOnce } from 'usehooks-ts'
 import React from 'react'
 
@@ -10,7 +10,7 @@ import localforage from 'localforage'
 import RangeSlider from 'react-range-slider-input'
 import 'react-range-slider-input/dist/style.css'
 
-import { Modal } from '../../shared/modal'
+import { Modal } from '@renderer/shared/modal'
 import Button from './parts/button'
 import useMemoryStore from '@renderer/stores/memory'
 

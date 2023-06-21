@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-import { useAuthStore } from '../../../../stores'
+import { useAuthStore } from '@renderer/stores'
 import { AddCircle } from 'iconoir-react'
 
 const Button = function ({ onOpen }) {

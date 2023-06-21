@@ -1,4 +1,4 @@
-import { useAuthStore } from '../../../../../stores'
+import { useAuthStore } from '@renderer/stores'
 import Card from './elements/card'
 
 const Cards = function () {

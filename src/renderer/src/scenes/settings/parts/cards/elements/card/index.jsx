@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { ColorExtractor } from 'react-color-extractor'
 
 import { Cancel } from 'iconoir-react'
-import { useAuthStore } from '../../../../../../../stores'
+import { useAuthStore } from '@renderer/stores'
 import { classes, textClasses } from './classes'
 
 const uuidRegx = /([a-zA-Z0-9]{8})([a-zA-Z0-9]{4})([a-zA-Z0-9]{4})([a-zA-Z0-9]{4})([a-zA-Z0-9]{12})/

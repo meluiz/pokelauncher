@@ -1,6 +1,6 @@
 import * as Tabs from '@radix-ui/react-tabs'
 
-import { Homepage, Settings } from '../../scene'
+import { Homepage, Settings } from '@renderer/scenes'
 import { Navigation } from '../navigation'
 import { Toolbar } from '../toolbar'
 
@@ -9,7 +9,7 @@ import React from 'react'
 import * as Scroll from '@radix-ui/react-scroll-area'
 
 import { Modal } from '../modal'
-import { useAuthStore } from '../../../stores'
+import { useAuthStore } from '@renderer/stores'
 import { Updater } from '../updater'
 
 export const Layout = function () {

@@ -1,4 +1,4 @@
-import Icon from '../../../assets/static/icon.png'
+import Icon from '@renderer/assets/static/icon.png'
 
 export const Loader = function () {
   return (
