@@ -1,8 +1,8 @@
-import * as Tabs from '@radix-ui/react-tabs'
-import PropTypes from 'prop-types'
+import * as Tabs from "@radix-ui/react-tabs";
+import PropTypes from "prop-types";
 
 const Trigger = function ({ label, href, children }) {
-  if (typeof href !== 'undefined' && href !== null) {
+  if (typeof href !== "undefined" && href !== null) {
     return (
       <li role="listitem">
         <a
@@ -15,7 +15,7 @@ const Trigger = function ({ label, href, children }) {
           {children}
         </a>
       </li>
-    )
+    );
   }
 
   return (
@@ -26,13 +26,13 @@ const Trigger = function ({ label, href, children }) {
     >
       <li role="listitem">{children}</li>
     </Tabs.Trigger>
-  )
-}
+  );
+};
 
-export default Trigger
+export default Trigger;
 
 Trigger.propTypes = {
   label: PropTypes.string.isRequired,
   href: PropTypes.string,
   children: PropTypes.element.isRequired
-}
+};

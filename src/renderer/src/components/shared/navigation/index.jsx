@@ -1,10 +1,10 @@
-import * as Tabs from '@radix-ui/react-tabs'
+import * as Tabs from "@radix-ui/react-tabs";
 
-import { SettingsIcon } from '../../icons'
+import { SettingsIcon } from "../../icons";
 
-import Avatar from './parts/avatar'
-import Triggers from './parts/triggers'
-import Trigger from './parts/triggers/trigger'
+import Avatar from "./parts/avatar";
+import Triggers from "./parts/triggers";
+import Trigger from "./parts/triggers/trigger";
 
 export const Navigation = function () {
   return (
@@ -24,5 +24,5 @@ export const Navigation = function () {
         </div>
       </div>
     </Tabs.List>
-  )
-}
+  );
+};

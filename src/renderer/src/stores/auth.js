@@ -1,5 +1,5 @@
-import localforage from 'localforage'
-import { create } from 'zustand'
+import localforage from "localforage";
+import { create } from "zustand";
 
 /**
  * @typedef {Object} UserMeta - Represents a user object.
@@ -47,64 +47,66 @@ import { create } from 'zustand'
  * @type {UseAuthStore}
  */
 
-const useAuthStore = create((set) => ({
+const useAuthStore = create(set => ({
   user: null,
   accounts: [],
   auth: {
     async verify() {
-      const user = (await localforage.getItem('actived_account')) || null
-      const accounts = (await localforage.getItem('access_accounts')) || []
+      const user = (await localforage.getItem("actived_account")) || null;
+      const accounts = (await localforage.getItem("access_accounts")) || [];
 
-      set({ user, accounts })
+      set({ user, accounts });
     },
     async login(user) {
-      if (typeof user === 'undefined') {
-        user = null
+      if (typeof user === "undefined") {
+        user = null;
       }
 
-      await localforage.setItem('actived_account', user)
-      return set({ user })
+      await localforage.setItem("actived_account", user);
+      return set({ user });
     },
     async updateAccounts(accounts = []) {
-      await localforage.setItem('access_accounts', accounts)
-      return set({ accounts })
+      await localforage.setItem("access_accounts", accounts);
+      return set({ accounts });
     },
     async addUserToAccounts(user) {
-      set(async (state) => {
-        const accounts = state.accounts
+      set(async state => {
+        const accounts = state.accounts;
 
-        if (!accounts.some((u) => u.name.toLowerCase() === user.name.toLowerCase())) {
-          accounts.push(user)
+        if (
+          !accounts.some(u => u.name.toLowerCase() === user.name.toLowerCase())
+        ) {
+          accounts.push(user);
         }
 
-        await state.auth.updateAccounts(accounts)
-      })
+        await state.auth.updateAccounts(accounts);
+      });
     },
     async addNewAccount(user) {
-      set(async (state) => {
-        await state.auth.login(user)
-        await state.auth.addUserToAccounts(user)
-      })
+      set(async state => {
+        await state.auth.login(user);
+        await state.auth.addUserToAccounts(user);
+      });
     },
     async removeUpdateAccount(user) {
-      set(async (state) => {
+      set(async state => {
         const [account, ...accounts] = state.accounts.filter(
-          (u) => u.name.toLowerCase() !== user.name?.toLowerCase()
-        )
+          u => u.name.toLowerCase() !== user.name?.toLowerCase()
+        );
 
         if (user.name.toLowerCase() === state.user.name.toLowerCase()) {
-          await state.auth.login(account)
+          await state.auth.login(account);
         }
 
-        if (typeof account === 'undefined') {
-          await state.auth.updateAccounts([])
-          return
+        if (typeof account === "undefined") {
+          await state.auth.updateAccounts([]);
+          return;
         }
 
-        await state.auth.updateAccounts([...accounts, account])
-      })
+        await state.auth.updateAccounts([...accounts, account]);
+      });
     }
   }
-}))
+}));
 
-export default useAuthStore
+export default useAuthStore;

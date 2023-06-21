@@ -1,4 +1,4 @@
-import IconImage from '../../../../../assets/static/icon.png'
+import IconImage from "../../../../../assets/static/icon.png";
 
 const Header = function () {
   return (
@@ -13,9 +13,11 @@ const Header = function () {
           />
         </figure>
       </div>
-      <h3 className="text-sand-12 font-bold text-xl text-center uppercase">Entrar com</h3>
+      <h3 className="text-sand-12 font-bold text-xl text-center uppercase">
+        Entrar com
+      </h3>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

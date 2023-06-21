@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Icon = React.forwardRef((props, ref) => {
   return (
@@ -7,9 +7,9 @@ const Icon = React.forwardRef((props, ref) => {
       className="w-[1em] h-[1em] inline-block vertical-center shrink-0 leading-4 text-current"
       {...props}
     />
-  )
-})
+  );
+});
 
-export default Icon
+export default Icon;
 
-Icon.displayName = 'Icon'
+Icon.displayName = "Icon";

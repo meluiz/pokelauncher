@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 export const CircularProgress = function ({ percentage, size, strokeWidth }) {
-  const radius = (size - strokeWidth) / 2
-  const viewbox = `0 0 ${size} ${size}`
+  const radius = (size - strokeWidth) / 2;
+  const viewbox = `0 0 ${size} ${size}`;
 
-  const circumference = 2 * Math.PI * radius
-  const offset = circumference - circumference * (percentage / 100)
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - circumference * (percentage / 100);
 
   return (
     <svg width={size} height={size} viewBox={viewbox}>
@@ -26,15 +26,15 @@ export const CircularProgress = function ({ percentage, size, strokeWidth }) {
         style={{
           strokeDasharray: circumference,
           strokeDashoffset: offset === 100 ? 0 : offset,
-          transition: 'all 100ms linear'
+          transition: "all 100ms linear"
         }}
       />
     </svg>
-  )
-}
+  );
+};
 
 CircularProgress.propTypes = {
   size: PropTypes.number.isRequired,
   strokeWidth: PropTypes.number,
   percentage: PropTypes.number.isRequired
-}
+};

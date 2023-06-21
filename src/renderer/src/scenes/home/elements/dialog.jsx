@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-import { FiCornerUpLeft } from 'react-icons/fi'
-import { MDXProvider } from '@mdx-js/react'
+import { FiCornerUpLeft } from "react-icons/fi";
+import { MDXProvider } from "@mdx-js/react";
 
 const Dialog = function ({ isOpen, article, onClose }) {
   if (!isOpen) {
-    return null
+    return null;
   }
 
   return (
@@ -28,13 +28,13 @@ const Dialog = function ({ isOpen, article, onClose }) {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dialog
+export default Dialog;
 
 Dialog.propTypes = {
   article: PropTypes.node,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired
-}
+};

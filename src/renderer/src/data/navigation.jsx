@@ -1,23 +1,28 @@
-import { DiscordIcon, HomeIcon, InstagramIcon, TiktokIcon } from '../components/icons'
+import {
+  DiscordIcon,
+  HomeIcon,
+  InstagramIcon,
+  TiktokIcon
+} from "../components/icons";
 
 export default [
   {
-    label: 'homepage',
+    label: "homepage",
     children: <HomeIcon />
   },
   {
-    label: 'discord',
-    href: 'discord://app/invite/pokevicio',
+    label: "discord",
+    href: "discord://app/invite/pokevicio",
     children: <DiscordIcon />
   },
   {
-    label: 'tiktok',
-    href: '/',
+    label: "tiktok",
+    href: "/",
     children: <TiktokIcon />
   },
   {
-    label: 'instagram',
-    href: '/',
+    label: "instagram",
+    href: "/",
     children: <InstagramIcon />
   }
-]
+];

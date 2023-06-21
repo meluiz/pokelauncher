@@ -1,4 +1,4 @@
-import { Cancel, Minus } from 'iconoir-react'
+import { Cancel, Minus } from "iconoir-react";
 
 export const Toolbar = function () {
   return (
@@ -9,7 +9,7 @@ export const Toolbar = function () {
           <button
             className="w-12 h-8 flex center relative cursor-pointer bg-transparent hover:bg-sand-3 text-md"
             onClick={() => {
-              window.electron.ipcRenderer.send('main-window-minimize')
+              window.electron.ipcRenderer.send("main-window-minimize");
             }}
           >
             <Minus />
@@ -19,7 +19,7 @@ export const Toolbar = function () {
           <button
             className="w-12 h-8 flex center relative cursor-pointer bg-transparent hover:bg-red-4 text-md"
             onClick={() => {
-              window.electron.ipcRenderer.send('main-window-close')
+              window.electron.ipcRenderer.send("main-window-close");
             }}
           >
             <Cancel />
@@ -27,5 +27,5 @@ export const Toolbar = function () {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};

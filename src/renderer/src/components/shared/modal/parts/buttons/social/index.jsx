@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import { useAuthStore } from '../../../../../../stores'
-import { BsWindows } from 'react-icons/bs'
+import { useAuthStore } from "../../../../../../stores";
+import { BsWindows } from "react-icons/bs";
 
 export const SocialButton = function ({
   nickname,
@@ -10,26 +10,29 @@ export const SocialButton = function ({
   isMicrosoftSending,
   updateMicrosoftSend
 }) {
-  const { auth } = useAuthStore()
+  const { auth } = useAuthStore();
 
   const handleMicrosoftLogin = React.useCallback(
-    async (ev) => {
-      ev.preventDefault()
-      updateMicrosoftSend(true)
+    async ev => {
+      ev.preventDefault();
+      updateMicrosoftSend(true);
 
-      const session = await window.electron.ipcRenderer.invoke('auth-microsoft', nickname)
+      const session = await window.electron.ipcRenderer.invoke(
+        "auth-microsoft",
+        nickname
+      );
 
       if (session === null || session.error) {
-        return handleReset()
+        return handleReset();
       }
 
-      await auth.login(session)
-      await auth.addUserToAccounts(session)
+      await auth.login(session);
+      await auth.addUserToAccounts(session);
 
-      handleReset()
+      handleReset();
     },
     [nickname]
-  )
+  );
 
   return (
     <button
@@ -39,12 +42,12 @@ export const SocialButton = function ({
     >
       <BsWindows className="relative" />
     </button>
-  )
-}
+  );
+};
 
 SocialButton.propTypes = {
   nickname: PropTypes.string.isRequired,
   handleReset: PropTypes.func.isRequired,
   isMicrosoftSending: PropTypes.bool.isRequired,
   updateMicrosoftSend: PropTypes.func.isRequired
-}
+};

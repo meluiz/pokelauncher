@@ -1,5 +1,5 @@
-import localforage from 'localforage'
-import { create } from 'zustand'
+import localforage from "localforage";
+import { create } from "zustand";
 
 /**
  * @typedef {Array} Memory - Represents a memory array.
@@ -28,18 +28,18 @@ import { create } from 'zustand'
  * @type {useMemoryStore}
  */
 
-const useMemoryStore = create((set) => ({
+const useMemoryStore = create(set => ({
   memory: null,
   action: {
     async verify() {
-      const memory = (await localforage.getItem('system-memory')) || null
-      set({ memory })
+      const memory = (await localforage.getItem("system-memory")) || null;
+      set({ memory });
     },
     async set(memory) {
-      await localforage.setItem('system-memory', memory)
-      return set({ memory })
+      await localforage.setItem("system-memory", memory);
+      return set({ memory });
     }
   }
-}))
+}));
 
-export default useMemoryStore
+export default useMemoryStore;

@@ -1,28 +1,28 @@
-import React from 'react'
+import React from "react";
 
-import * as Tabs from '@radix-ui/react-tabs'
+import * as Tabs from "@radix-ui/react-tabs";
 
-import { useDisclosure } from '@renderer/hooks'
+import { useDisclosure } from "@renderer/hooks";
 
-import Dialog from './elements/dialog'
+import Dialog from "./elements/dialog";
 
-import ExampleThree from './articles/example-three.mdx'
-import { PlayButton } from '@renderer/components/layout'
-import ArticleCard from '@renderer/components/layout/article-card'
+import ExampleThree from "./articles/example-three.mdx";
+import { PlayButton } from "@renderer/components/layout";
+import ArticleCard from "@renderer/components/layout/article-card";
 
 export const Homepage = function () {
-  const [article, updateArticle] = React.useState(null)
-  const { isOpen, onOpen, onClose } = useDisclosure(false)
+  const [article, updateArticle] = React.useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure(false);
 
-  const handleOnClick = React.useCallback((article) => {
-    updateArticle(article)
-    onOpen()
-  }, [])
+  const handleOnClick = React.useCallback(article => {
+    updateArticle(article);
+    onOpen();
+  }, []);
 
   return (
     <Tabs.Content className="tab-content relative" value="homepage" forceMount>
       <Dialog isOpen={isOpen && article} article={article} onClose={onClose} />
-      <div style={{ display: isOpen ? 'none' : 'block' }}>
+      <div style={{ display: isOpen ? "none" : "block" }}>
         <div className="w-full h-36 flex flex-col justify-end relative bg-sand-3/30 border-b border-solid border-sand-4 z-10">
           <PlayButton />
         </div>
@@ -48,5 +48,5 @@ export const Homepage = function () {
         </div>
       </div>
     </Tabs.Content>
-  )
-}
+  );
+};

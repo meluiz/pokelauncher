@@ -1,67 +1,70 @@
-import React from 'react'
+import React from "react";
 
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-import Input from './parts/input'
-import { useToggle, useUpdateEffect } from 'usehooks-ts'
-import Header from './parts/header'
-import Divider from './parts/divider'
-import { SocialButton, SubmitButton } from './parts/buttons'
-import { AnimatePresence } from 'framer-motion'
-import { useAuthStore } from '../../../stores'
-import { motion } from 'framer-motion'
-import { generalAnim, modalAnim } from './keyframes'
+import Input from "./parts/input";
+import { useToggle, useUpdateEffect } from "usehooks-ts";
+import Header from "./parts/header";
+import Divider from "./parts/divider";
+import { SocialButton, SubmitButton } from "./parts/buttons";
+import { AnimatePresence } from "framer-motion";
+import { useAuthStore } from "../../../stores";
+import { motion } from "framer-motion";
+import { generalAnim, modalAnim } from "./keyframes";
 
-let timing
+let timing;
 export const Modal = function ({ show, onClose }) {
-  const { auth } = useAuthStore()
-  const [nickname, updateNickname] = React.useState('')
-  const [isInvalid, , updateInvalid] = useToggle(true)
+  const { auth } = useAuthStore();
+  const [nickname, updateNickname] = React.useState("");
+  const [isInvalid, , updateInvalid] = useToggle(true);
 
-  const [isLoading, updateLoading] = React.useState(false)
-  const [isMicrosoftSending, updateMicrosoftSend] = React.useState(false)
+  const [isLoading, updateLoading] = React.useState(false);
+  const [isMicrosoftSending, updateMicrosoftSend] = React.useState(false);
 
   const handleReset = React.useCallback(() => {
-    updateLoading(false)
-    updateMicrosoftSend(false)
-    updateNickname('')
-  }, [])
+    updateLoading(false);
+    updateMicrosoftSend(false);
+    updateNickname("");
+  }, []);
 
   useUpdateEffect(() => {
     if (!show) {
-      handleReset()
+      handleReset();
     }
-  }, [show])
+  }, [show]);
 
   const handleLogin = React.useCallback(
-    async (ev) => {
-      ev.preventDefault()
+    async ev => {
+      ev.preventDefault();
 
-      updateLoading(true)
-      clearTimeout(timing)
+      updateLoading(true);
+      clearTimeout(timing);
 
-      const session = await window.electron.ipcRenderer.invoke('auth-offline', nickname)
+      const session = await window.electron.ipcRenderer.invoke(
+        "auth-offline",
+        nickname
+      );
 
       if (session === null || session.error) {
-        updateLoading(false)
-        return
+        updateLoading(false);
+        return;
       }
 
       timing = setTimeout(async () => {
-        clearTimeout(timing)
+        clearTimeout(timing);
 
-        await auth.login(session)
-        await auth.addUserToAccounts(session)
+        await auth.login(session);
+        await auth.addUserToAccounts(session);
 
-        handleReset()
+        handleReset();
 
         if (onClose) {
-          onClose()
+          onClose();
         }
-      }, 1500)
+      }, 1500);
     },
     [nickname]
-  )
+  );
 
   return (
     <AnimatePresence>
@@ -76,7 +79,7 @@ export const Modal = function ({ show, onClose }) {
         >
           <motion.div
             className="w-full h-auto min-h-0 max-w-md flex flex-col center rounded-3xl shadow-2xl space-y-6 px-6 pt-10 pb-16 bg-sand-2"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
             variants={modalAnim}
             initial="hidden"
             animate="visible"
@@ -91,7 +94,11 @@ export const Modal = function ({ show, onClose }) {
                 updateMicrosoftSend={updateMicrosoftSend}
               />
               <Divider />
-              <form className="flex center space-x-4" method="GET" onSubmit={handleLogin}>
+              <form
+                className="flex center space-x-4"
+                method="GET"
+                onSubmit={handleLogin}
+              >
                 <Input
                   nickname={nickname}
                   isInvalid={isInvalid}
@@ -108,10 +115,10 @@ export const Modal = function ({ show, onClose }) {
         </motion.div>
       ) : null}
     </AnimatePresence>
-  )
-}
+  );
+};
 
 Modal.propTypes = {
   show: PropTypes.bool,
   onClose: PropTypes.func
-}
+};

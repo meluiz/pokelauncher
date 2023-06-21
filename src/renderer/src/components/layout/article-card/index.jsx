@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 const ArticleCard = function ({ title, thumbnail, description, ...props }) {
   return (
@@ -18,13 +18,13 @@ const ArticleCard = function ({ title, thumbnail, description, ...props }) {
         </div>
       </article>
     </button>
-  )
-}
+  );
+};
 
-export default ArticleCard
+export default ArticleCard;
 
 ArticleCard.propTypes = {
   title: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired
-}
+};

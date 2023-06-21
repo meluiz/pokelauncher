@@ -1,20 +1,22 @@
-import React from 'react'
-import * as Tabs from '@radix-ui/react-tabs'
+import React from "react";
+import * as Tabs from "@radix-ui/react-tabs";
 
-import { useAuthStore } from '../../../../stores'
+import { useAuthStore } from "../../../../stores";
 
-import { ColorExtractor } from 'react-color-extractor'
+import { ColorExtractor } from "react-color-extractor";
 
 const Avatar = function () {
-  const { user } = useAuthStore()
-  const [bgColor, updateBgColor] = React.useState('rgb(255 255 255 / 0.05)')
+  const { user } = useAuthStore();
+  const [bgColor, updateBgColor] = React.useState("rgb(255 255 255 / 0.05)");
 
-  const imageUrl = `https://minotar.net/armor/bust/${user ? user.name : 'undefined'}/80.png`
+  const imageUrl = `https://minotar.net/armor/bust/${
+    user ? user.name : "undefined"
+  }/80.png`;
 
-  const handleExtractionComplete = React.useCallback((colorPalette) => {
-    const leastProminentColor = colorPalette[colorPalette.length - 1]
-    updateBgColor(leastProminentColor)
-  }, [])
+  const handleExtractionComplete = React.useCallback(colorPalette => {
+    const leastProminentColor = colorPalette[colorPalette.length - 1];
+    updateBgColor(leastProminentColor);
+  }, []);
 
   return (
     <Tabs.Trigger value="settings" asChild>
@@ -32,7 +34,7 @@ const Avatar = function () {
         </ColorExtractor>
       </button>
     </Tabs.Trigger>
-  )
-}
+  );
+};
 
-export default Avatar
+export default Avatar;

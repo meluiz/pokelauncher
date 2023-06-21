@@ -1,35 +1,35 @@
-import * as Tabs from '@radix-ui/react-tabs'
+import * as Tabs from "@radix-ui/react-tabs";
 
-import { Homepage, Settings } from '@renderer/scenes'
-import { Navigation } from '../navigation'
-import { Toolbar } from '../toolbar'
+import { Homepage, Settings } from "@renderer/scenes";
+import { Navigation } from "../navigation";
+import { Toolbar } from "../toolbar";
 
-import React from 'react'
+import React from "react";
 
-import * as Scroll from '@radix-ui/react-scroll-area'
+import * as Scroll from "@radix-ui/react-scroll-area";
 
-import { Modal } from '../modal'
-import { useAuthStore } from '@renderer/stores'
-import { Updater } from '../updater'
+import { Modal } from "../modal";
+import { useAuthStore } from "@renderer/stores";
+import { Updater } from "../updater";
 
 export const Layout = function () {
-  const { user } = useAuthStore()
-  const [hasAvailableUpdate, updateAvailableUpdate] = React.useState(true)
+  const { user } = useAuthStore();
+  const [hasAvailableUpdate, updateAvailableUpdate] = React.useState(true);
 
   React.useEffect(() => {
     if (process.env.NODE_ENV) {
-      updateAvailableUpdate(false)
+      updateAvailableUpdate(false);
     }
 
-    window.electron.ipcRenderer.on('updater-update-available', () => {
-      updateAvailableUpdate(true)
-      window.electron.ipcRenderer.send('start-update')
-    })
+    window.electron.ipcRenderer.on("updater-update-available", () => {
+      updateAvailableUpdate(true);
+      window.electron.ipcRenderer.send("start-update");
+    });
 
-    window.electron.ipcRenderer.on('updater-update-not-available', () => {
-      updateAvailableUpdate(false)
-    })
-  }, [])
+    window.electron.ipcRenderer.on("updater-update-not-available", () => {
+      updateAvailableUpdate(false);
+    });
+  }, []);
 
   return (
     <div className="w-screen h-screen block relative bg-accents-1 text-sand-10">
@@ -46,11 +46,14 @@ export const Layout = function () {
             <Homepage />
             <Settings />
           </Scroll.Viewport>
-          <Scroll.Scrollbar className="w-1 bg-transparent z-50" orientation="vertical">
+          <Scroll.Scrollbar
+            className="w-1 bg-transparent z-50"
+            orientation="vertical"
+          >
             <Scroll.Thumb className="w-2 bg-sand-6" data-state="hidden" />
           </Scroll.Scrollbar>
         </Scroll.Root>
       </Tabs.Root>
     </div>
-  )
-}
+  );
+};

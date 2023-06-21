@@ -5,8 +5,8 @@ labels: ["bug"]
 body:
   - type: markdown
     attributes:
-     value: |
-      Un grand merci d'avance pour votre aide. Néanmoins, nous avons besoin d'un certain nombre d'informations, pour nous aider.
+      value: |
+        Un grand merci d'avance pour votre aide. Néanmoins, nous avons besoin d'un certain nombre d'informations, pour nous aider.
   - type: checkboxes
     attributes:
       label: "Liste des vérifications à faire avant de valider l'ouverture du signalement de bug"
@@ -35,7 +35,7 @@ body:
       label: Version du système d'exploitation
       placeholder: "Exemple: Windows 11 Professionnel 21H2 Build 22000.739"
     validations:
-        required: true
+      required: true
   - type: input
     attributes:
       label: Hash du commit sur lequel le bug est rencontré

@@ -1,104 +1,112 @@
-import React from 'react'
+import React from "react";
 
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-import { BsWindows } from 'react-icons/bs'
+import { BsWindows } from "react-icons/bs";
 
-import { useEffectOnce } from 'usehooks-ts'
-import { useAuthStore } from '../../../../stores'
+import { useEffectOnce } from "usehooks-ts";
+import { useAuthStore } from "../../../../stores";
 
-import IconImage from '../../../../assets/static/icon.png'
-import Loader from './loader'
-import { motion } from 'framer-motion'
-import { AnimatePresence } from 'framer-motion'
+import IconImage from "../../../../assets/static/icon.png";
+import Loader from "./loader";
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
-let timing
+let timing;
 const Modal = function ({ isOpen, onClose }) {
-  const { auth } = useAuthStore()
-  const [username, updateUsername] = React.useState('')
+  const { auth } = useAuthStore();
+  const [username, updateUsername] = React.useState("");
 
-  const [isLoading, updateLoading] = React.useState(false)
-  const [isDisabled, updateDisabled] = React.useState(true)
-  const [isMicrosoftSending, updateMicrosoftSend] = React.useState(false)
+  const [isLoading, updateLoading] = React.useState(false);
+  const [isDisabled, updateDisabled] = React.useState(true);
+  const [isMicrosoftSending, updateMicrosoftSend] = React.useState(false);
 
   function reset() {
-    updateLoading(false)
-    updateDisabled(true)
-    updateMicrosoftSend(false)
-    updateUsername('')
-    onClose()
+    updateLoading(false);
+    updateDisabled(true);
+    updateMicrosoftSend(false);
+    updateUsername("");
+    onClose();
   }
 
   const addNewAccount = React.useCallback(
-    async (ev) => {
-      ev.preventDefault()
+    async ev => {
+      ev.preventDefault();
 
-      updateLoading(true)
-      clearTimeout(timing)
+      updateLoading(true);
+      clearTimeout(timing);
 
-      const session = await window.electron.ipcRenderer.invoke('auth-offline', username)
+      const session = await window.electron.ipcRenderer.invoke(
+        "auth-offline",
+        username
+      );
 
       if (session === null || session.error) {
-        updateLoading(false)
-        return
+        updateLoading(false);
+        return;
       }
 
       timing = setTimeout(async () => {
-        clearTimeout(timing)
+        clearTimeout(timing);
 
-        await auth.login(session)
-        await auth.addUserToAccounts(session)
-        reset()
-      }, 1200)
+        await auth.login(session);
+        await auth.addUserToAccounts(session);
+        reset();
+      }, 1200);
     },
     [username]
-  )
+  );
 
   const addNewMicrosoftAccount = React.useCallback(
-    async (ev) => {
-      ev.preventDefault()
-      updateMicrosoftSend(true)
+    async ev => {
+      ev.preventDefault();
+      updateMicrosoftSend(true);
 
-      const session = await window.electron.ipcRenderer.invoke('auth-microsoft', username)
+      const session = await window.electron.ipcRenderer.invoke(
+        "auth-microsoft",
+        username
+      );
 
       if (session === null || session.error) {
-        return reset()
+        return reset();
       }
 
-      await auth.login(session)
-      await auth.addUserToAccounts(session)
+      await auth.login(session);
+      await auth.addUserToAccounts(session);
 
-      reset()
+      reset();
     },
     [username]
-  )
+  );
 
   const handleOnChange = React.useCallback(function (e) {
-    const value = e.target.value
+    const value = e.target.value;
 
-    const isInvalidLenght = value.length < 3 || value.length > 16
-    const hasAcceptedChar = /[a-zA-Z0-9_]+/g.test(value)
-    const hasInvalidChar = /[ `!@#$%^&*()+\-=[\]{};':"\\|,.<>/?~]+/g.test(value)
+    const isInvalidLenght = value.length < 3 || value.length > 16;
+    const hasAcceptedChar = /[a-zA-Z0-9_]+/g.test(value);
+    const hasInvalidChar = /[ `!@#$%^&*()+\-=[\]{};':"\\|,.<>/?~]+/g.test(
+      value
+    );
 
-    updateUsername(value)
-    updateDisabled(isInvalidLenght || !hasAcceptedChar || hasInvalidChar)
-  }, [])
+    updateUsername(value);
+    updateDisabled(isInvalidLenght || !hasAcceptedChar || hasInvalidChar);
+  }, []);
 
   useEffectOnce(() => {
-    document.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Escape') {
-        onClose()
+    document.addEventListener("keydown", ev => {
+      if (ev.key === "Escape") {
+        onClose();
       }
-    })
+    });
 
     return () => {
-      document.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Escape') {
-          onClose()
+      document.addEventListener("keydown", ev => {
+        if (ev.key === "Escape") {
+          onClose();
         }
-      })
-    }
-  })
+      });
+    };
+  });
 
   return (
     <AnimatePresence>
@@ -112,7 +120,7 @@ const Modal = function ({ isOpen, onClose }) {
         >
           <motion.div
             className="w-full h-auto min-h-0 flex flex-col center space-y-6 p-6 max-w-md rounded-md bg-sand-2"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.75 }}
@@ -120,10 +128,16 @@ const Modal = function ({ isOpen, onClose }) {
             <div className="flex flex-col center space-y-6">
               <div className="w-20 h-20 flex center rounded-full bg-orange-10/5 border border-solid border-white/5 overflow-hidden">
                 <figure className="translate-y-1">
-                  <img className="w-14 animate-bounce" src={IconImage} alt="Logo" />
+                  <img
+                    className="w-14 animate-bounce"
+                    src={IconImage}
+                    alt="Logo"
+                  />
                 </figure>
               </div>
-              <h3 className="font-bold text-xl text-center uppercase">Nova conta com</h3>
+              <h3 className="font-bold text-xl text-center uppercase">
+                Nova conta com
+              </h3>
             </div>
             <div className="w-full max-w-xs flex flex-col space-y-4">
               <button
@@ -137,7 +151,11 @@ const Modal = function ({ isOpen, onClose }) {
               <div className="w-full flex center relative before:contents-[''] before:w-full before:h-px before:absolute before:top-1/2 before:-translate-y-1/2 before:bg-sand-6">
                 <span className="flex px-2 text-white bg-sand-2 z-10">ou</span>
               </div>
-              <form className="flex flex-col space-y-3" method="GET" onSubmit={addNewAccount}>
+              <form
+                className="flex flex-col space-y-3"
+                method="GET"
+                onSubmit={addNewAccount}
+              >
                 <input
                   type="text"
                   placeholder="Steve"
@@ -152,7 +170,7 @@ const Modal = function ({ isOpen, onClose }) {
                   className="w-full h-14 flex center rounded-xl font-bold bg-red-8 hover:bg-red-7 transition-all duration-200 active:scale-[.98] disabled:opacity-40"
                   disabled={isDisabled || isLoading || isMicrosoftSending}
                 >
-                  {isLoading ? <Loader /> : 'Entrar'}
+                  {isLoading ? <Loader /> : "Entrar"}
                 </button>
               </form>
             </div>
@@ -160,12 +178,12 @@ const Modal = function ({ isOpen, onClose }) {
         </motion.div>
       ) : null}
     </AnimatePresence>
-  )
-}
+  );
+};
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired
-}
+};
 
-export default Modal
+export default Modal;

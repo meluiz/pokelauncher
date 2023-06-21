@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-import { useAuthStore } from '@renderer/stores'
-import { AddCircle } from 'iconoir-react'
+import { useAuthStore } from "@renderer/stores";
+import { AddCircle } from "iconoir-react";
 
 const Button = function ({ onOpen }) {
-  const { user } = useAuthStore()
+  const { user } = useAuthStore();
 
   if (!user) {
-    return null
+    return null;
   }
 
   return (
@@ -17,11 +17,11 @@ const Button = function ({ onOpen }) {
     >
       <AddCircle strokeWidth={2} />
     </button>
-  )
-}
+  );
+};
 
 Button.propTypes = {
   onOpen: PropTypes.func.isRequired
-}
+};
 
-export default Button
+export default Button;

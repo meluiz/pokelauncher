@@ -1,57 +1,57 @@
-import React from 'react'
+import React from "react";
 
-import { useEffectOnce } from 'usehooks-ts'
+import { useEffectOnce } from "usehooks-ts";
 
-import { Loader } from './scenes'
-import { Layout } from './components/shared'
+import { Loader } from "./scenes";
+import { Layout } from "./components/shared";
 
-import useAuthStore from './stores/auth'
-import useMemoryStore from './stores/memory'
+import useAuthStore from "./stores/auth";
+import useMemoryStore from "./stores/memory";
 
 const App = function () {
-  const { auth } = useAuthStore()
-  const { action } = useMemoryStore()
+  const { auth } = useAuthStore();
+  const { action } = useMemoryStore();
 
-  const [isWindowUpdated, updateWindowUpdated] = React.useState(false)
+  const [isWindowUpdated, updateWindowUpdated] = React.useState(false);
 
   function checkForUpdate() {
-    window.electron.ipcRenderer.invoke('update-laucher').then((res) => {
+    window.electron.ipcRenderer.invoke("update-laucher").then(res => {
       if (res && res.error) {
-        return window.electron.ipcRenderer.send('main-window-close')
+        return window.electron.ipcRenderer.send("main-window-close");
       }
 
-      window.electron.ipcRenderer.send('main-window-open')
-      updateWindowUpdated(true)
-    })
+      window.electron.ipcRenderer.send("main-window-open");
+      updateWindowUpdated(true);
+    });
 
-    window.electron.ipcRenderer.send('main-window-open')
-    updateWindowUpdated(true)
+    window.electron.ipcRenderer.send("main-window-open");
+    updateWindowUpdated(true);
   }
 
   useEffectOnce(() => {
-    ;(async () => await auth.verify())()
-    ;(async () => await action.verify())()
-  })
+    (async () => await auth.verify())();
+    (async () => await action.verify())();
+  });
 
   React.useEffect(() => {
-    window.electron.ipcRenderer.on('data', () => {
-      window.electron.ipcRenderer.invoke('main-window-hide')
-    })
+    window.electron.ipcRenderer.on("data", () => {
+      window.electron.ipcRenderer.invoke("main-window-hide");
+    });
 
-    window.electron.ipcRenderer.on('close', () => {
-      window.electron.ipcRenderer.invoke('main-window-show')
-    })
-  }, [])
+    window.electron.ipcRenderer.on("close", () => {
+      window.electron.ipcRenderer.invoke("main-window-show");
+    });
+  }, []);
 
   React.useEffect(() => {
-    setTimeout(checkForUpdate, 1500)
-  }, [])
+    setTimeout(checkForUpdate, 1500);
+  }, []);
 
   if (!isWindowUpdated) {
-    return <Loader />
+    return <Loader />;
   }
 
-  return <Layout />
-}
+  return <Layout />;
+};
 
-export default App
+export default App;

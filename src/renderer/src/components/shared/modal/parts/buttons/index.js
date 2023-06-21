@@ -1,2 +1,2 @@
-export * from './social'
-export * from './submit'
+export * from "./social";
+export * from "./submit";

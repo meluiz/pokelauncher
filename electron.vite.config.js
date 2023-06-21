@@ -1,9 +1,9 @@
-import { resolve } from 'path'
-import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
-import react from '@vitejs/plugin-react'
+import { resolve } from "path";
+import { defineConfig, externalizeDepsPlugin } from "electron-vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig(async () => {
-  const mdx = await import('@mdx-js/rollup')
+  const mdx = await import("@mdx-js/rollup");
   return {
     main: {
       plugins: [externalizeDepsPlugin()]
@@ -14,10 +14,10 @@ export default defineConfig(async () => {
     renderer: {
       resolve: {
         alias: {
-          '@renderer': resolve('src/renderer/src')
+          "@renderer": resolve("src/renderer/src")
         }
       },
       plugins: [react(), mdx.default()]
     }
-  }
-})
+  };
+});

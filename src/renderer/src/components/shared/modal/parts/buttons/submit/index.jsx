@@ -1,5 +1,5 @@
-import { CgChevronRight, CgSpinner } from 'react-icons/cg'
-import PropTypes from 'prop-types'
+import { CgChevronRight, CgSpinner } from "react-icons/cg";
+import PropTypes from "prop-types";
 
 export const SubmitButton = function ({ isDisabled, isLoading }) {
   return (
@@ -14,10 +14,10 @@ export const SubmitButton = function ({ isDisabled, isLoading }) {
         <CgChevronRight className="-translate-x-0.5" />
       )}
     </button>
-  )
-}
+  );
+};
 
 SubmitButton.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired
-}
+};

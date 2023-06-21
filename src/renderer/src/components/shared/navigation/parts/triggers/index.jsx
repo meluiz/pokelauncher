@@ -1,5 +1,5 @@
-import navigation from '@renderer/data/navigation'
-import Trigger from './trigger'
+import navigation from "@renderer/data/navigation";
+import Trigger from "./trigger";
 
 const Triggers = function () {
   return (
@@ -8,7 +8,7 @@ const Triggers = function () {
         <Trigger key={`${label}-${idx}`} label={label} {...props} />
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default Triggers
+export default Triggers;
