@@ -62,3 +62,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run build
         shell: bash
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        path: dist/[a-bA-Z0-9-.]+.[exe|dmg|tar.gz|AppImage]
